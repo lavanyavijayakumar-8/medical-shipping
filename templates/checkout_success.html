@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container page-content">
+    <div class="success-panel glass-panel text-center">
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24" width="64" height="64" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="success-svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h2>Order Confirmed!</h2>
+        <p>Thank you for your purchase. Your order <strong>#{{ order.id }}</strong> has been placed successfully.</p>
+        <p>We are shipping your items to:</p>
+        <div class="address-box">
+            {{ order.shipping_address }}
+        </div>
+        <a href="{% url 'home' %}" class="btn btn-primary mt-4">Return Home</a>
+    </div>
+</div>
+{% endblock %}

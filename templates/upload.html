@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container page-content">
+    <div class="upload-container glass-panel">
+        <h2>Upload Your Prescription</h2>
+        <p>Our intelligent system will scan your prescription and find the exact medicines you need.</p>
+        
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            {% csrf_token %}
+            <div class="file-input-wrapper">
+                <label for="prescription_image" class="file-label">
+                    <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="upload-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <span>Choose a file or drag it here</span>
+                </label>
+                <input type="file" id="prescription_image" name="prescription_image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large">Scan Prescription</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

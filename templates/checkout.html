@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container page-content">
+    <div class="checkout-grid">
+        <div class="order-summary glass-panel">
+            <h2>Order Summary</h2>
+            <div class="summary-item">
+                {% if medicine.image %}
+                    <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}" class="summary-img">
+                {% endif %}
+                <div class="summary-details">
+                    <h3>{{ medicine.name }}</h3>
+                    <p class="price">${{ medicine.price }}</p>
+                </div>
+            </div>
+            <div class="total-row">
+                <span>Total</span>
+                <strong>${{ medicine.price }}</strong>
+            </div>
+        </div>
+
+        <div class="shipping-details glass-panel">
+            <h2>Shipping & Payment</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" name="address" rows="4" required placeholder="Enter your full address here..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="card">Card Number (Mock)</label>
+                    <input type="text" id="card" placeholder="1234 5678 9101 1121" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large w-100">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
